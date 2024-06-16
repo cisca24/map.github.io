@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historical Sites in Kenya</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+        #map {
+            height: 80vh;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container mt-4">
+    <h1 class="text-center text-primary">Francisca Wawira - ENC221-0089/2019</h1>
+    <h3 class="text-center my-3">Historical Sites in Kenya</h3>
+    <div id="map"></div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script>
+    var map = L.map('map').setView([-1.286389, 36.817223], 6); // Centered on Nairobi
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    var sites = [
+        {"name": "Fort Jesus, Mombasa", "coords": [-4.0622, 39.6765]},
+        {"name": "Gede Ruins, Kilifi County", "coords": [-3.2980, 40.0185]},
+        {"name": "Lamu Old Town, Lamu Island", "coords": [-2.2714, 40.9020]},
+        {"name": "Thimlich Ohinga, Migori County", "coords": [-1.2467, 34.4826]},
+        {"name": "Olorgesailie Prehistoric Site, Kajiado County", "coords": [-1.5884, 36.4463]},
+        {"name": "Karen Blixen Museum, Nairobi", "coords": [-1.3624, 36.7168]},
+        {"name": "Nairobi National Museum, Nairobi", "coords": [-1.2762, 36.8167]},
+        {"name": "Kariandusi Prehistoric Site, Nakuru County", "coords": [-0.4583, 36.2333]},
+        {"name": "Jumba la Mtwana, Kilifi County", "coords": [-3.9566, 39.7696]},
+        {"name": "Hyrax Hill Prehistoric Site, Nakuru County", "coords": [-0.2930, 36.0728]},
+        {"name": "Takwa Ruins, Manda Island", "coords": [-2.1166, 40.9134]},
+        {"name": "Kenyatta House, Maralal", "coords": [-1.0903, 36.7002]},
+        {"name": "Kisumu Museum, Kisumu", "coords": [-0.1014, 34.7519]},
+        {"name": "Malindi Museum, Malindi", "coords": [-3.2161, 40.1166]},
+        {"name": "Lamu Fort, Lamu Island", "coords": [-2.2682, 40.9021]},
+        {"name": "Witu Palace Ruins, Witu", "coords": [-2.3833, 40.4454]},
+        {"name": "Mnarani Ruins, Kilifi", "coords": [-3.6201, 39.8472]},
+        {"name": "Lord Egerton Castle, Nakuru", "coords": [-0.2582, 35.9492]},
+        {"name": "Meru Museum, Meru", "coords": [0.0485, 37.6501]},
+        {"name": "Kabarnet Museum, Kabarnet", "coords": [0.4930, 35.7475]}
+    ];
+
+    sites.forEach(function(site) {
+        L.marker(site.coords).addTo(map)
+            .bindPopup('<b>' + site.name + '</b>')
+            .openPopup();
+    });
+</script>
+
+</body>
+</html>
